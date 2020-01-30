@@ -23,3 +23,5 @@ else
 	fi;
 fi;
 unset doIt;
+
+source gitconfig.sh

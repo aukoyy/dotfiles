@@ -1,6 +1,7 @@
 # Git aliases
+alias g="git"
 alias gs='git status'
-alias gco="!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+alias gco="git checkout"
 alias gb='git branch'
 alias glg='git lg -10'
 alias cpg='cat package.json | grep'
@@ -16,11 +17,8 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
-alias g="git"
+alias c="cd ~/code"
+
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
