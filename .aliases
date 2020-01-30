@@ -5,6 +5,15 @@ alias gco="git checkout"
 alias gb='git branch'
 alias glg='git lg -10'
 alias cpg='cat package.json | grep'
+# Git branch bash completion
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+  
+  # Add git completion to aliases
+  __git_complete g __git_main
+  __git_complete gco _git_checkout
+fi
+
 
 #!/usr/bin/env bash
 
