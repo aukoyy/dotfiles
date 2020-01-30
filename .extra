@@ -1,0 +1,8 @@
+# Git credentials
+# Not in the repository, to prevent people from accidentally committing under my name
+GIT_AUTHOR_NAME="Øyvind Aukner"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+git config --global user.name "aukoyy"
+GIT_AUTHOR_EMAIL="oyvind.auk@gmail.com"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
