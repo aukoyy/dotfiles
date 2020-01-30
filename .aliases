@@ -27,6 +27,7 @@ alias -- -="cd -"
 
 # Shortcuts
 alias c="cd ~/code"
+alias m="cd /mnt/c/Users/Øyvind"
 
 
 # List all files colorized in long format
