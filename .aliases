@@ -1,6 +1,6 @@
 # Git aliases
 alias gs='git status'
-alias gco='git checkout'
+alias gco="!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 alias gb='git branch'
 alias glg='git lg -10'
 alias cpg='cat package.json | grep'

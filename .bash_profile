@@ -1,6 +1,3 @@
-# The following echo statement is for demo purposes only. Remove at will
-echo 'FROM BASH_PROFILE';
-
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
