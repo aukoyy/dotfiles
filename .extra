@@ -1,8 +1,10 @@
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
 GIT_AUTHOR_NAME="Øyvind Aukner"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "aukoyy"
 GIT_AUTHOR_EMAIL="oyvind.auk@gmail.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+# Set up a better git logging:
+# Use with "git lg" instead of "git log"
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

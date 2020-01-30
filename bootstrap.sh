@@ -24,4 +24,4 @@ else
 fi;
 unset doIt;
 
-source gitconfig.sh
+
