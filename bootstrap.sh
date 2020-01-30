@@ -25,3 +25,12 @@ fi;
 unset doIt;
 
 
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        echo "On linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "On mac"
+		#TODO add yes or no for running brew scripts
+		# source brew.sh
+else
+	"Unknown OS. Not setting OS specific preferences"
+fi
