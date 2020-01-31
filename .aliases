@@ -1,3 +1,7 @@
+# python
+alias python="python3"
+
+
 # Git aliases
 alias g="git"
 alias gs='git status'
