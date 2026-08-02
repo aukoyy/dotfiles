@@ -179,12 +179,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-# Decoder for JWT tokens
-# > jwt-decode <jwt-token>
-jwt-decode() {
-  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
-}
-
-jwt() {
-  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
-}
