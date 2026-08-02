@@ -11,7 +11,7 @@ alias p='git pull'
 alias pi='git pull && npm i'
 
 # Quick commands
-alias dcb='dotnet clean && dotnet build'
+alias t3="python /Users/aukoyy/code/projects/things-reader/reader-object.py"
 
 # Easier navigation: 
 alias -- -="cd -"
@@ -19,11 +19,11 @@ alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 # Shortcuts
 alias c="cd ~/code"
+alias n="cd ~/notes"
 alias p="cd ~/code/projects"
 alias pp="cd ~/code/projects/sandbox/python-practice"
 
-alias ct="cd ~/code/cargotron"
-alias q="cd ~/code/qubit"
+alias hosts="sudo vim /etc/hosts"
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
@@ -34,7 +34,7 @@ alias la="ls -lAF ${colorflag}"
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
-# Always use color output for `ls`
+# Always use color output for ls
 alias ls="command ls ${colorflag}"
 
 # Always enable colored `grep` output
@@ -58,9 +58,63 @@ alias path='echo -e ${PATH//:/\\n}'
 # shortcut for the versions function
 alias v='versions'
 
-# Get local network adress of this machine
+
+# Network
 alias localhost="ipconfig getifaddr $(route -n get default|awk '/interface/ { print $2 }')"
+alias ip="curl icanhazip.com"
+alias ipv4="curl https://checkip.amazonaws.com"
+alias mac="networksetup -listallhardwareports"
 # ipconfig getifaddr en0 would also work
+
+# DNS check for fullvase.no
+dns() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: dns <domain>"
+    return 1
+  fi
+  
+  local domain="$1"
+  
+  for r in NS MX TXT CNAME; do
+    echo "\n### $r"
+    dig +short $r "$domain"
+  done
+  echo "\n### autodiscover"
+  dig +short CNAME "autodiscover.$domain"
+}
+
+# Decoder for JWT tokens
+# > jwt-decode <jwt-token>
+jwt-decode() {
+  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
+}
+
+jwt() {
+  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
+}
+
+alias yt='caffeinate -i yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+// alias ytl='caffeinate -i yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+alias yta='caffeinate -i yt-dlp -f bestaudio --extract-audio --audio-format mp3 --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+
+alias yt720='caffeinate -i yt-dlp -f "bestvideo[height<=720]+bestaudio/best[height<=720]/best" --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+// alias ytl720='caffeinate -i yt-dlp -f "bestvideo[height<=720]+bestaudio/best[height<=720]/best" --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+
+
+sapro() {
+  local target_date="2025-04-10"
+  local current_date=$(date +%Y-%m-%d)
+  local days_until=$(( ($(date -j -f "%Y-%m-%d" "$target_date" +%s) - $(date -j -f "%Y-%m-%d" "$current_date" +%s)) / (60*60*24) ))
+  echo "$days_until days until SA Pro exam"
+}
+
+weekd() {
+  local week_number=$(date +%V)
+  local dow=$(date +%u)
+  local monday=$(date -d "today - $((dow - 1)) days" +%-d)
+  local sunday=$(date -d "today + $((7 - dow)) days" +%-d)
+  echo "${week_number}.${monday}-${sunday}"
+}
 
 # helper text for backing up on AWS S3
 function backup() {
@@ -70,3 +124,60 @@ function backup() {
   echo "Backup folder: ??"
   echo ""
 }
+
+alias res='source ~/.zshrc'
+
+# NPM cheatsheet function - essential npm commands
+function npmc() {
+  echo ""
+  echo "📦 NPM Essential Commands:"
+  echo ""
+  echo "🔍 Check:"
+  echo "  1. npm outdated           - Check for outdated packages"
+  echo "  2. npx npm-check-updates  - Check for updates (detailed)"
+  echo "  3. npm list --depth=0     - List installed packages"
+  echo "  4. npx depcheck           - Check for unused packages"
+  echo ""
+  echo "⚡ Actions:"
+  echo "  5. ncu -u && npm install  - Update package.json and install"
+  echo ""
+  
+  read "choice?Enter number to run command (or press Enter to exit): "
+  
+  # Helper function to check if we're in a Node.js project
+  local check_project() {
+    if [[ ! -f "package.json" ]]; then
+      echo ""
+      echo "⚠️  No package.json found in current directory"
+      return 0
+    fi
+  }
+  
+  case $choice in
+    1) echo ""; check_project && npm outdated ;;
+    2) echo ""; check_project && npx npm-check-updates ;;
+    3) echo ""; npm list --depth=0 ;;
+    4) echo ""; check_project && npx depcheck ;;
+    5) echo ""; check_project && npx npm-check-updates -u && npm install ;;
+    *) echo ""; echo "Exiting..." ;;
+  esac
+}
+
+# Productivity
+export REMINDERS_TOKEN="f396c75896003e960e48fabf2858f6eecceed4fd36770a6713650c1fb5180d12"
+alias digiget='npm --prefix /Users/aukoyy/code/projects/digiget run show'
+
+alias jpr='/Users/aukoyy/Library/Mobile\ Documents/iCloud~com~openplanetsoftware~just-press-record/Documents'
+
+# AWS 
+alias awsid='aws sts get-caller-identity'
+alias awsenv='env | grep -i aws'
+
+# Terminal customization
+## Enable shift-selection
+bindkey -M emacs '^[[1;2C' forward-char
+bindkey -M emacs '^[[1;2D' backward-char
+
+## Word selection with shift+option
+bindkey -M emacs '^[[1;4C' forward-word
+bindkey -M emacs '^[[1;4D' backward-word
