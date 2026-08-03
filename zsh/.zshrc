@@ -1,3 +1,6 @@
+# Navigation shortcuts (like .. for cd ..)
+# setopt AUTO_CD
+
 # Load antidote
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load

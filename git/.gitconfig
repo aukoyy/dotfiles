@@ -6,6 +6,7 @@
   editor = vim
   excludesfile = /Users/aukoyy/.gitignore_global
 [alias]
+  nccommit = commit -a --allow-empty-message -m ""
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [pull]
 	rebase = false

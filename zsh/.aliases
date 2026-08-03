@@ -14,7 +14,11 @@ alias pi='git pull && npm i'
 alias t3="python /Users/aukoyy/code/projects/things-reader/reader-object.py"
 
 # Easier navigation: 
-alias -- -="cd -"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias -- -='cd -'
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 # Shortcuts
