@@ -1,0 +1,14 @@
+# restores windows/tabs on relaunch
+window-save-state = always
+
+# --- font ---
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# --- appearance ---
+theme = Catppuccin Mocha
+# ghostty +list-themes to browse
+
+# --- macos ---
+macos-option-as-alt = true
+# makes alt+f / alt+b work in zsh
