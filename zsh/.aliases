@@ -179,5 +179,17 @@ bindkey -M emacs '^[[1;2C' forward-char
 bindkey -M emacs '^[[1;2D' backward-char
 
 ## Word selection with shift+option
-bindkey -M emacs '^[[1;4C' forward-word
-bindkey -M emacs '^[[1;4D' backward-word
+#bindkey -M emacs '^[[1;4C' forward-word
+#bindkey -M emacs '^[[1;4D' backward-word
+
+# Set a function that can print the current version of some packages
+function versions() {
+  echo "Using mise for Python and Node versions"
+  echo "Python version:"
+  python -V
+  echo ""
+  echo "Node version:"
+  node -v
+  echo "NPM version:"
+  npm -v
+}
