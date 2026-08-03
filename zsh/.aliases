@@ -23,9 +23,7 @@ alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 # Shortcuts
 alias c="cd ~/code"
-alias n="cd ~/notes"
 alias p="cd ~/code/projects"
-alias pp="cd ~/code/projects/sandbox/python-practice"
 
 alias hosts="sudo vim /etc/hosts"
 
@@ -59,8 +57,7 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# shortcut for the versions function
-alias v='versions'
+
 
 
 # Network
@@ -97,12 +94,77 @@ jwt() {
   jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
 }
 
-alias yt='caffeinate -i yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
-# alias ytl='caffeinate -i yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
-alias yta='caffeinate -i yt-dlp -f bestaudio --extract-audio --audio-format mp3 --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+# ----- yt-dlp -----
+_yt_dlp_dl() {
+  local quality="best" transcribe=false url=""
 
-alias yt720='caffeinate -i yt-dlp -f "bestvideo[height<=720]+bestaudio/best[height<=720]/best" --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
-# alias ytl720='caffeinate -i yt-dlp -f "bestvideo[height<=720]+bestaudio/best[height<=720]/best" --merge-output-format mp4 --embed-chapters --cookies-from-browser chrome -o "~/youtube-downloads/%(uploader)s - %(title).200s.%(ext)s"'
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -4k) quality="4k"; shift ;;
+      -720) quality="720"; shift ;;
+      -480) quality="480"; shift ;;
+      -a) quality="audio"; shift ;;
+      -t) transcribe=true; shift ;;
+      -*) echo "yt: unknown option $1"; return 1 ;;
+      *) url="$1"; shift ;;
+    esac
+  done
+
+  if [[ -z "$url" ]]; then
+    echo "Usage: yt [-4k|-720|-480|-a] [-t] <url>"
+    return 1
+  fi
+
+  local dir="$HOME/youtube"
+  mkdir -p "$dir"
+  local out="$dir/%(uploader)s - %(title).200s.%(ext)s"
+
+  local printfile
+  local -a extra_args=()
+  if [[ "$transcribe" == true ]]; then
+    printfile=$(mktemp)
+    extra_args=(--print-to-file "after_move:%(filepath)s" "$printfile")
+  fi
+
+  case "$quality" in
+    audio)
+      caffeinate -i yt-dlp -f bestaudio --extract-audio --audio-format mp3 \
+        --cookies-from-browser chrome "${extra_args[@]}" -o "$out" "$url"
+      ;;
+    480)
+      caffeinate -i yt-dlp -f "bestvideo[height<=480]+bestaudio/best[height<=480]/best" \
+        --merge-output-format mp4 --embed-chapters \
+        --cookies-from-browser chrome "${extra_args[@]}" -o "$out" "$url"
+      ;;
+    720)
+      caffeinate -i yt-dlp -f "bestvideo[height<=720]+bestaudio/best[height<=720]/best" \
+        --merge-output-format mp4 --embed-chapters \
+        --cookies-from-browser chrome "${extra_args[@]}" -o "$out" "$url"
+      ;;
+    4k)
+      caffeinate -i yt-dlp -f "bestvideo[height<=2160]+bestaudio/best[height<=2160]/best" \
+        --merge-output-format mp4 --embed-chapters \
+        --cookies-from-browser chrome "${extra_args[@]}" -o "$out" "$url"
+      ;;
+    best)
+      caffeinate -i yt-dlp -f bestvideo+bestaudio \
+        --merge-output-format mp4 --embed-chapters \
+        --cookies-from-browser chrome "${extra_args[@]}" -o "$out" "$url"
+      ;;
+  esac
+
+  if [[ "$transcribe" == true ]]; then
+    local dest="$HOME/youtube/transcribe-yt"
+    mkdir -p "$dest"
+    if [[ -s "$printfile" ]]; then
+      while IFS= read -r f; do
+        [[ -f "$f" ]] && mv "$f" "$dest/"
+      done < "$printfile"
+    fi
+    rm -f "$printfile"
+  fi
+}
+alias yt='noglob _yt_dlp_dl'
 
 
 sapro() {
@@ -171,20 +233,22 @@ function npmc() {
 export REMINDERS_TOKEN="f396c75896003e960e48fabf2858f6eecceed4fd36770a6713650c1fb5180d12"
 alias digiget='npm --prefix /Users/aukoyy/code/projects/digiget run show'
 
-alias jpr='/Users/aukoyy/Library/Mobile\ Documents/iCloud~com~openplanetsoftware~just-press-record/Documents'
-
 # AWS 
 alias awsid='aws sts get-caller-identity'
 alias awsenv='env | grep -i aws'
 
 # Terminal customization
 ## Enable shift-selection
-bindkey -M emacs '^[[1;2C' forward-char
-bindkey -M emacs '^[[1;2D' backward-char
+#bindkey -M emacs '^[[1;2C' forward-char
+#bindkey -M emacs '^[[1;2D' backward-char
 
 ## Word selection with shift+option
 #bindkey -M emacs '^[[1;4C' forward-word
 #bindkey -M emacs '^[[1;4D' backward-word
+
+
+# shortcut for the versions function
+alias v='versions'
 
 # Set a function that can print the current version of some packages
 function versions() {
