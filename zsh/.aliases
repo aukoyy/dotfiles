@@ -167,19 +167,11 @@ _yt_dlp_dl() {
 }
 alias yt='noglob _yt_dlp_dl'
 
-
-sapro() {
-  local target_date="2025-04-10"
-  local current_date=$(date +%Y-%m-%d)
-  local days_until=$(( ($(date -j -f "%Y-%m-%d" "$target_date" +%s) - $(date -j -f "%Y-%m-%d" "$current_date" +%s)) / (60*60*24) ))
-  echo "$days_until days until SA Pro exam"
-}
-
 weekd() {
   local week_number=$(date +%V)
   local dow=$(date +%u)
-  local monday=$(date -d "today - $((dow - 1)) days" +%-d)
-  local sunday=$(date -d "today + $((7 - dow)) days" +%-d)
+  local monday=$(date -v -$((dow - 1))d +%-d)
+  local sunday=$(date -v +$((7 - dow))d +%-d)
   echo "${week_number}.${monday}-${sunday}"
 }
 
