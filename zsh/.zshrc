@@ -1,3 +1,7 @@
+# PATH
+typeset -U path
+path=("$HOME/bin" $path)
+
 # Load antidote
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load

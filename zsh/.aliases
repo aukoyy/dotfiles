@@ -24,6 +24,7 @@ alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 # Shortcuts
 alias c="cd ~/code"
 alias p="cd ~/code/projects"
+alias b="cd ~/bots"
 
 alias hosts="sudo vim /etc/hosts"
 

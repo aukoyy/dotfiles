@@ -10,5 +10,5 @@ theme = Catppuccin Mocha
 # ghostty +list-themes to browse
 
 # --- macos ---
-macos-option-as-alt = true
+#macos-option-as-alt = left
 # makes alt+f / alt+b work in zsh
