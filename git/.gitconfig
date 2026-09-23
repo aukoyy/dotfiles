@@ -1,7 +1,7 @@
 [user]
   name = Øyvind Aukner
   email = 22494963+aukoyy@users.noreply.github.com
-  
+
 [core]
   editor = vim
   excludesfile = /Users/aukoyy/.gitignore_global
@@ -12,3 +12,6 @@
 	rebase = false
 [init]
 	defaultBranch = main
+
+[secrets]
+providers = cat /Users/aukoyy/.cvp-git-secrets-patterns

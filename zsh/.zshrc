@@ -20,3 +20,5 @@ bindkey '^[[B' history-substring-search-down
 
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"
+
+. "$HOME/.cargo/env"
