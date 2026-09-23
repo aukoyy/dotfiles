@@ -22,15 +22,12 @@ $haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
-[](fg:sapphire bg:blue)\
-$kubernetes\
-[](fg:blue bg:lavender)\
+[](fg:sapphire bg:lavender)\
 $time\
 [ ](fg:lavender)\
 $cmd_duration\
 $line_break\
-$character
-"""
+$character"""
 
 palette = 'catppuccin_mocha'
 
@@ -89,7 +86,6 @@ style = "bg:yellow"
 format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
 
 [nodejs]
-disabled = true
 symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
@@ -150,21 +146,6 @@ style = "fg:crust bg:sapphire"
 format = '[$symbol$environment ]($style)'
 ignore_base = false
 
-[kubernetes]
-disabled = false
-symbol = '󱃾 '
-style = 'bg:blue'
-format = '[[ $symbol$context(\($namespace\)) ](fg:crust bg:blue)]($style)'
-# Show in every directory, not just k8s-related ones.
-detect_files = []
-detect_folders = []
-detect_extensions = []
-
-# Shorten EKS ARNs to the bare cluster name (PRD-US, DEV-EU, ...).
-[[kubernetes.contexts]]
-context_pattern = 'arn:aws:eks:.*:cluster/(.*)'
-context_alias = '$1'
-
 [time]
 disabled = false
 time_format = "%R"
@@ -172,7 +153,7 @@ style = "bg:lavender"
 format = '[[  $time ](fg:crust bg:lavender)]($style)'
 
 [line_break]
-disabled = false
+disabled = true
 
 [character]
 disabled = false
