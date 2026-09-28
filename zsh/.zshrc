@@ -14,6 +14,9 @@ zle -N bracketed-paste bracketed-paste-magic
 # Source aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# Source worktree aliases
+source ~/dotfiles/worktree.sh
+
 # Use substring search (git plus arrow up finds history with git)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down

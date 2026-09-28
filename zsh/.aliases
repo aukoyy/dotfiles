@@ -10,8 +10,14 @@ alias cpg='cat package.json | grep'
 alias p='git pull'
 alias pi='git pull && npm i'
 
-# Quick commands
-alias t3="python /Users/aukoyy/code/projects/things-reader/reader-object.py"
+# git worktree
+alias gw='git worktree'
+alias gwl='git worktree list'
+alias gwa='git worktree add'
+alias gwr='git worktree remove'
+alias gwp='git worktree prune'
+alias gwm='git worktree move'
+
 
 # Easier navigation: 
 alias ..='cd ..'
@@ -25,7 +31,7 @@ alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 alias c="cd ~/code"
 alias p="cd ~/code/projects"
 alias f="cd ~/code/flowcase"
-alias b="cd ~/bots"
+alias ft='cd ~/code/worktrees/flowcase'
 
 alias hosts="sudo vim /etc/hosts"
 
@@ -156,7 +162,7 @@ _yt_dlp_dl() {
   esac
 
   if [[ "$transcribe" == true ]]; then
-    local dest="$HOME/youtube/transcribe-yt"
+    local dest="$HOME/youtube/transcribe"
     mkdir -p "$dest"
     if [[ -s "$printfile" ]]; then
       while IFS= read -r f; do
