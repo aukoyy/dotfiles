@@ -1,0 +1,11 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[keys]
+next_tab = ["prefix+n", "ctrl+alt+n"]
+previous_tab = ["prefix+p", "ctrl+alt+p"]
+new_tab = ["prefix+c", "ctrl+alt+t"]
+close_tab = ["prefix+shift+x", "ctrl+alt+w"]
