@@ -3,9 +3,28 @@
   "lines": [
     [
       {
-        "id": "1",
-        "type": "model",
-        "color": "cyan"
+        "id": "6c1e800f-3ab8-4295-b470-e494f89d7e08",
+        "type": "separator"
+      },
+      {
+        "id": "758cbd13-1742-4a53-ba7f-ab974547e344",
+        "type": "model"
+      },
+      {
+        "id": "62be7293-ca62-49a8-b000-aa02195bce4e",
+        "type": "separator"
+      },
+      {
+        "id": "f2e34869-7a7e-4f12-bf3b-82e491b9b2d7",
+        "type": "tokens-output"
+      },
+      {
+        "id": "22050c1f-0b67-4aa8-b36a-fc77ef7f9af5",
+        "type": "separator"
+      },
+      {
+        "id": "d9859058-3a99-4708-9fda-88dce4ee032d",
+        "type": "tokens-cached"
       },
       {
         "id": "2",
@@ -15,32 +34,59 @@
         "id": "3",
         "type": "context-length",
         "color": "brightBlack"
-      },
-      {
-        "id": "4",
-        "type": "separator"
-      },
-      {
-        "id": "5",
-        "type": "git-branch",
-        "color": "magenta"
-      },
-      {
-        "id": "6",
-        "type": "separator"
-      },
-      {
-        "id": "7",
-        "type": "git-changes",
-        "color": "yellow"
       }
     ],
-    [],
-    []
+    [
+      {
+        "id": "4a9451ef-960e-464f-becc-e754a2661f2a",
+        "type": "session-usage",
+        "numberFormat": {
+          "style": "compact"
+        },
+        "metadata": {
+          "display": "progress-short",
+          "cursor": "true"
+        }
+      },
+      {
+        "id": "18e1d1a6-6105-481b-8bab-aa6448066cb0",
+        "type": "separator"
+      },
+      {
+        "id": "0c4a4e1d-6194-47ea-bd0d-ae71a30156ab",
+        "type": "weekly-usage",
+        "numberFormat": {
+          "style": "compact"
+        },
+        "metadata": {
+          "display": "progress-short",
+          "cursor": "true"
+        }
+      },
+      {
+        "id": "38598ccd-a983-4cff-8035-c8c5d0cb5bed",
+        "type": "separator"
+      },
+      {
+        "id": "5971ee90-293a-4c1c-8dd0-3670814cc1d0",
+        "type": "fable-weekly-usage",
+        "numberFormat": {
+          "style": "compact"
+        }
+      },
+      {
+        "id": "e840f3dd-28aa-41f2-bd7c-483814c2549b",
+        "type": "separator"
+      },
+      {
+        "id": "6155d3e9-3f26-4ef3-bbfe-58adfaaa05a1",
+        "type": "extra-usage-used"
+      }
+    ]
   ],
-  "flexMode": "full",
-  "compactThreshold": 60,
-  "colorLevel": 2,
+  "flexMode": "full-until-compact",
+  "compactThreshold": 80,
+  "colorLevel": 3,
   "defaultPaddingSide": "both",
   "inheritSeparatorColors": false,
   "globalBold": false,
@@ -57,8 +103,5 @@
     "autoAlign": false,
     "continueThemeAcrossLines": false
   },
-  "installation": {
-    "method": "auto-update",
-    "packageManager": "npm"
-  }
+  "exportedBy": "2.2.30"
 }
