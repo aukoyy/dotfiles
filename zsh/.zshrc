@@ -25,3 +25,11 @@ eval "$(~/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"
 
 . "$HOME/.cargo/env"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/aukoyy/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/aukoyy/.config/tfenv/versions/1.9.8/terraform terraform
