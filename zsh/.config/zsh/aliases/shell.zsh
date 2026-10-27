@@ -8,6 +8,7 @@ alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 # Shortcuts
 alias c="cd ~/code"
+alias b="cd ~/bots"
 alias p="cd ~/code/projects"
 alias f="cd ~/code/flowcase"
 alias ft='cd ~/code/worktrees/flowcase'
