@@ -11,15 +11,24 @@ autoload -Uz url-quote-magic bracketed-paste-magic
 zle -N self-insert url-quote-magic
 zle -N bracketed-paste bracketed-paste-magic
 
-# Source aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# Source aliases and functions (one file per topic)
+for f in ~/.config/zsh/aliases/*.zsh(N); do source "$f"; done
+unset f
 
-# Source worktree aliases
-source ~/dotfiles/worktree.sh
+# Local secrets, not tracked in dotfiles
+[[ -f ~/.secrets.zsh ]] && source ~/.secrets.zsh
 
 # Use substring search (git plus arrow up finds history with git)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+## Enable shift-selection
+#bindkey -M emacs '^[[1;2C' forward-char
+#bindkey -M emacs '^[[1;2D' backward-char
+
+## Word selection with shift+option
+#bindkey -M emacs '^[[1;4C' forward-word
+#bindkey -M emacs '^[[1;4D' backward-word
 
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"

@@ -1,5 +1,5 @@
 # Git worktree helpers (bash / zsh)
-# Add to ~/.zshrc or ~/.bashrc:   source ~/path/to/wt.sh
+# Sourced from ~/.zshrc via ~/.config/zsh/aliases/*.zsh
 #
 # Layout:
 #   ~/code/<org>/<repo>                     normal clones (unchanged)
