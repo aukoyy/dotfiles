@@ -9,6 +9,13 @@ alias glg='git lg -30'
 alias cpg='cat package.json | grep'
 alias p='git pull'
 alias pi='git pull && npm i'
+alias gprune='git fetch --prune && git for-each-ref --format="%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)" refs/heads | xargs git branch -d'
+
+prs() {
+  gh search prs --review-requested=@me --state=open \
+    --json repository,number,title,labels,updatedAt,url \
+    --template '{{tablerow "REPO" "ID" "UPDATED" "LABELS" "TITLE"}}{{range .}}{{tablerow .repository.nameWithOwner (printf "#%v" .number | color "green") (timeago .updatedAt) (pluck "name" .labels | join ", ") (hyperlink .url .title)}}{{end}}{{tablerender}}'
+}
 
 # git worktree
 alias gw='git worktree'
@@ -236,6 +243,11 @@ alias digiget='npm --prefix /Users/aukoyy/code/projects/digiget run show'
 # AWS 
 alias awsid='aws sts get-caller-identity'
 alias awsenv='env | grep -i aws'
+alias awsme='export AWS_PROFILE=aukoyy'
+alias awswork='unset AWS_PROFILE'
+
+# Kubernetes
+alias k='kubectl'
 
 # Terminal customization
 ## Enable shift-selection

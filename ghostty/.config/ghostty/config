@@ -14,8 +14,8 @@ theme = Catppuccin Mocha
 # makes alt+f / alt+b work in zsh
 
 # Ghostty config
-keybind = ctrl+tab=text:\x1b\x0e
-keybind = ctrl+shift+tab=text:\x1b\x10
+#keybind = ctrl+tab=text:\x1b\x0e
+#keybind = ctrl+shift+tab=text:\x1b\x10
 
-keybind = cmd+t=text:\x1b\x14
-keybind = cmd+w=text:\x1b\x17
+#keybind = cmd+t=text:\x1b\x14
+#keybind = cmd+w=text:\x1b\x17
