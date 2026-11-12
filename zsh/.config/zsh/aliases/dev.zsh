@@ -42,20 +42,5 @@ function npmc() {
   esac
 }
 
-# shortcut for the versions function
-alias v='versions'
-
-# Set a function that can print the current version of some packages
-function versions() {
-  echo "Using mise for Python and Node versions"
-  echo "Python version:"
-  python -V
-  echo ""
-  echo "Node version:"
-  node -v
-  echo "NPM version:"
-  npm -v
-}
-
 # Productivity
 alias digiget='npm --prefix /Users/aukoyy/code/projects/digiget run show'

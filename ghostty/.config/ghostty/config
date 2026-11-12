@@ -19,3 +19,5 @@ theme = Catppuccin Mocha
 
 #keybind = cmd+t=text:\x1b\x14
 #keybind = cmd+w=text:\x1b\x17
+
+unfocused-split-opacity = 1
