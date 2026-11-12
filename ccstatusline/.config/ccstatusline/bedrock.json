@@ -1,0 +1,73 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      {
+        "id": "6c1e800f-3ab8-4295-b470-e494f89d7e08",
+        "type": "separator"
+      },
+      {
+        "id": "758cbd13-1742-4a53-ba7f-ab974547e344",
+        "type": "model"
+      },
+      {
+        "id": "62be7293-ca62-49a8-b000-aa02195bce4e",
+        "type": "separator"
+      },
+      {
+        "id": "f2e34869-7a7e-4f12-bf3b-82e491b9b2d7",
+        "type": "tokens-output"
+      },
+      {
+        "id": "22050c1f-0b67-4aa8-b36a-fc77ef7f9af5",
+        "type": "separator"
+      },
+      {
+        "id": "d9859058-3a99-4708-9fda-88dce4ee032d",
+        "type": "tokens-cached"
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "3",
+        "type": "context-length",
+        "color": "brightBlack"
+      }
+    ],
+    [
+      {
+        "id": "aws-account",
+        "type": "custom-command",
+        "commandPath": "~/.config/ccstatusline/aws-account.sh",
+        "preserveColors": true,
+        "color": "white"
+      }
+    ]
+  ],
+  "flexMode": "full-until-compact",
+  "compactThreshold": 80,
+  "colorLevel": 3,
+  "defaultPaddingSide": "both",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "terminalWidthCacheTtlSeconds": 5,
+  "customCommandCacheTtlSeconds": 0,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  },
+  "exportedBy": "2.2.30"
+}
