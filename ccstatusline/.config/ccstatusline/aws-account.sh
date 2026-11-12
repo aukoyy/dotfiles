@@ -15,17 +15,20 @@ account=$(
     head -1 | cut -d: -f5
 )
 
-red=$'\e[1;31m'
-yellow=$'\e[33m'
+# Labels the account Claude's Bedrock calls go through, not the one you work in,
+# hence the Claude icon, "Bedrock" and no warning colors.
+case "$account" in
+  043180741939) label="DEV/STG" ;;
+  571580010132) label="PRD" ;;
+  485543188032) label="PRD-US" ;;
+  637423540658) label="PRD-CA" ;;
+  881017026848) label="BUILDTOOLS" ;;
+  633056972712) label="MASTER" ;;
+  302263063645) label="MARKETPLACE" ;;
+  *) label="" ;;
+esac
+
+claude=$'\e[38;2;215;119;87m'
 reset=$'\e[0m'
 
-case "$account" in
-  043180741939) echo "${yellow}AWS DEV/STG${reset}" ;;
-  571580010132) echo "${red}AWS PRD${reset}" ;;
-  485543188032) echo "${red}AWS PRD-US${reset}" ;;
-  637423540658) echo "${red}AWS PRD-CA${reset}" ;;
-  881017026848) echo "AWS BUILDTOOLS" ;;
-  633056972712) echo "AWS MASTER" ;;
-  302263063645) echo "AWS MARKETPLACE" ;;
-  *) echo "AWS" ;;
-esac
+echo "${claude} Bedrock${label:+ $label}${reset}"
