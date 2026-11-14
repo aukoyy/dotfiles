@@ -38,6 +38,46 @@
     ],
     [
       {
+        "id": "subscription",
+        "type": "custom-text",
+        "customText": " Subscription",
+        "color": "white"
+      },
+      {
+        "id": "aws-sep-1",
+        "type": "separator"
+      },
+      {
+        "id": "cwd",
+        "type": "current-working-dir",
+        "metadata": {
+          "segments": "2"
+        },
+        "character": "",
+        "rawValue": true
+      },
+      {
+        "id": "aws-sep-2",
+        "type": "separator"
+      },
+      {
+        "id": "git-branch",
+        "type": "git-branch",
+        "character": ""
+      },
+      {
+        "id": "aws-sep-3",
+        "type": "separator"
+      },
+      {
+        "id": "kube-context",
+        "type": "custom-command",
+        "commandPath": "~/.config/ccstatusline/kube-context.sh",
+        "color": "blue"
+      }
+    ],
+    [
+      {
         "id": "4a9451ef-960e-464f-becc-e754a2661f2a",
         "type": "session-usage",
         "numberFormat": {

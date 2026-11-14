@@ -36,6 +36,8 @@ export default {
         "ask.webtopsolutions.com/*",
         "sunsama.com/*",
         "*.sunsama.com/*",
+        "*.meetup.com/*",
+        "*.bulder.com/*",
       ],
       browser: "Firefox",
     },

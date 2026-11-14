@@ -7,6 +7,9 @@ alias awswork='unset AWS_PROFILE'
 # Kubernetes
 alias kc='kubectl'
 
+# Lima
+alias lc='limactl'
+
 # alias eksnodes="/Users/aukoyy/code/flowcase/eks-node-viewer/eks-node-viewer --resources=cpu,memory --extra-labels=topology.kubernetes.io/zone,karpenter.sh/nodepool"
 alias eksnodes="/Users/aukoyy/.local/bin/eks-node-viewer --resources=cpu,memory --extra-labels=topology.kubernetes.io/zone,karpenter.sh/nodepool"
 
