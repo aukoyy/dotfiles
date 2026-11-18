@@ -22,6 +22,7 @@ $haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
+${env_var.PROMPT_AWS_ACCOUNT}\
 [](fg:sapphire bg:blue)\
 $kubernetes\
 [](fg:blue bg:lavender)\
@@ -149,6 +150,11 @@ symbol = "  "
 style = "fg:crust bg:sapphire"
 format = '[$symbol$environment ]($style)'
 ignore_base = false
+
+[env_var.PROMPT_AWS_ACCOUNT]
+symbol = ' '
+style = 'bg:sapphire'
+format = '[[ $symbol$env_value ](fg:crust bg:sapphire)]($style)'
 
 [kubernetes]
 disabled = false

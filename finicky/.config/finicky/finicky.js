@@ -38,6 +38,7 @@ export default {
         "*.sunsama.com/*",
         "*.meetup.com/*",
         "*.bulder.com/*",
+        "*.finn.no/*",
       ],
       browser: "Firefox",
     },
